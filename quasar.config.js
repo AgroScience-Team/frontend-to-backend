@@ -53,6 +53,13 @@ module.exports = configure(function (/* ctx */) {
 
    devServer: {
     open: false, // существующая настройка
+    server: {
+      watch: {
+        // Использование опроса, каждые 100ms проверять изменения
+        usePolling: true,
+        interval: 100,
+      }
+    }
   },
 
 

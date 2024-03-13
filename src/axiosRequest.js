@@ -40,7 +40,7 @@ export function postreg({ email, text_password, role }) {
             "role": role
         }
         axios
-            .post(`${process.env.QUASAR_APP_API_URL}/api/auth/register`, myrequest)
+            .post(`http://188.243.22.63/api/auth/register`, myrequest)
             .then((response) => {
                 console.log(response);
                 const code = response.status;
@@ -68,7 +68,7 @@ export function postlog({ username, password }) {
         }
 
         axios
-            .post(`${process.env.QUASAR_APP_API_URL}/api/auth/token`, myrequest, {
+            .post('http://188.243.22.63/api/auth/token', myrequest, {
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
                 }
@@ -115,7 +115,7 @@ export function postlog({ username, password }) {
 export function postToServer({ url, data, request, getParams }) {
     console.log("POST TO SERVER: ", data); // что передаем
 
-    return new Promise((resolve, reject) => { //ассинхронное 
+    return new Promise((resolve, reject) => { //ассинхронное
         const { access_token } = userStore.getState();
         let axiosFunc;
 

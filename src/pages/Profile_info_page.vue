@@ -92,7 +92,7 @@ export default {
     const workData = reactive({ name: '', surname: '', patronymic: '', date_of_birth: '', phone_number: '' });
     const flag = ref(false);
 
-    postToServer({ url: `http://localhost:8080/api/profiles/${myrole}s/me`, request: 'get' })
+    postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api/profiles/${myrole}s/me`, request: 'get' })
       .then((response) => {
         for (const key in response) {
           const data = myrole === 'worker' ? workData : orgData;

@@ -66,7 +66,7 @@ setup() {
   const fetchSoilData = () => {
     if (!fieldId) return;
 
-    axios.get(`http://localhost:8080/api/fields?fieldId=${fieldId}`, {
+    axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields?fieldId=${fieldId}`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
@@ -134,7 +134,7 @@ setup() {
     };
 
     console.log('Submitting data:', JSON.stringify(soilData)); //check data
-    axios.put(`http://localhost:8080/api/fields/soil?soilId=${soilId.value}`, soilData, {
+    axios.put(`${process.env.QUASAR_APP_API_URL}/api/fields/soil?soilId=${soilId.value}`, soilData, {
         headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ setup() {
   };
 
   const deleteData = () => {
-    axios.delete(`http://localhost:8080/api/fields/soil?soilId=${soilId.value}`, {
+    axios.delete(`${process.env.QUASAR_APP_API_URL}/api/fields/soil?soilId=${soilId.value}`, {
         headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'

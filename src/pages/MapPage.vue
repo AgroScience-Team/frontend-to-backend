@@ -37,7 +37,7 @@ export default {
     //Get data
     const fetchDataAndDrawPolygons = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/fields/organization/preview`, {
+        const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields/organization/preview`, {
               headers: {
                   'Authorization': `Bearer ${accessToken}`,
                   'Content-Type': 'application/json'

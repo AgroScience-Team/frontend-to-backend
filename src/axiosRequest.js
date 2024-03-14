@@ -40,7 +40,7 @@ export function postreg({ email, text_password, role }) {
             "role": role
         }
         axios
-            .post(`http://188.243.22.63/api/auth/register`, myrequest)
+            .post(`http://188.243.22.63:8080/api/auth/register`, myrequest)
             .then((response) => {
                 console.log(response);
                 const code = response.status;
@@ -68,7 +68,7 @@ export function postlog({ username, password }) {
         }
 
         axios
-            .post('http://188.243.22.63/api/auth/token', myrequest, {
+            .post('http://188.243.22.63:8080/api/auth/token', myrequest, {
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
                 }

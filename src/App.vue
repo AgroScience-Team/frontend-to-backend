@@ -61,12 +61,12 @@ export default {
       // console.log(userStore.getState().access_token);
 
       if (userStore.getState().access_token) {
-        postToServer({ url: 'http://188.243.22.63/api/auth/users/me', request: 'get' })
+        postToServer({ url: 'http://188.243.22.63:8080/api/auth/users/me', request: 'get' })
           .then((response) => {
             console.log(response);
             userStore.updateState('role', response.role);
             console.log(response.role);
-            return postToServer({ url: `http://188.243.22.63/api/profiles/${response.role}s/me`, request: 'get' })
+            return postToServer({ url: `http://188.243.22.63:8080/api/profiles/${response.role}s/me`, request: 'get' })
           })
           .then((response) => {
             console.log(response);

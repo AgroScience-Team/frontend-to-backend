@@ -2,7 +2,7 @@
     <div>
       <q-btn label="Загрузить Файл" @click="uploadFile"></q-btn>
       <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none"/>
-  
+
       <div v-show="formData">
         <q-input v-model="formData.name" label="Имя поля"></q-input>
         <q-input v-model="formData.description" label="Описание"></q-input>
@@ -21,7 +21,7 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   import { ref, computed, onMounted } from 'vue';
   import axios from 'axios';
@@ -47,7 +47,7 @@
         },
         color: "000000"
       });
-  
+
       const $q = useQuasar();
 
       const fieldId = route.query.id;
@@ -67,7 +67,7 @@
         reader.readAsText(file);
       }
       };
-  
+
       const parseKML = (text, file) => {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(text, "text/xml");
@@ -117,7 +117,7 @@
     //calculate squared area
       const calculateArea = computed(() => {
         if (!formData.value || !formData.value.geom || !formData.value.geom.coordinates || formData.value.geom.coordinates.length < 3) {
-          return 0; 
+          return 0;
         }
 
         const coordinates = formData.value.geom.coordinates.map(coord => [coord.longitude, coord.latitude]);
@@ -186,7 +186,7 @@
         if (!accessToken) {
             console.error('No access token available');
             return;
-            }     
+            }
             if (isSubmitDisabled.value) {
             $q.notify({
                 type: 'negative',
@@ -214,7 +214,7 @@
         console.log('success');
         console.log(formData);
 
-            axios.put(`${process.env.QUASAR_APP_API_URL}/api/fields?fieldId=${fieldId}`, formData.value, {
+            axios.put(`http://188.243.22.63:8080/api/fields?fieldId=${fieldId}`, formData.value, {
                 headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
@@ -235,7 +235,7 @@
       };
 
       const deleteData = () => {
-        axios.delete(`${process.env.QUASAR_APP_API_URL}/api/fields?fieldId=${fieldId}`, {
+        axios.delete(`http://188.243.22.63:8080/api/fields?fieldId=${fieldId}`, {
                 headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
@@ -251,14 +251,14 @@
             })
       };
 
-  
+
       return {
-        fileInput, 
-        formData, 
-        uploadFile, 
-        handleFileUpload, 
-        parseKML, 
-        coordinatesJSON, 
+        fileInput,
+        formData,
+        uploadFile,
+        handleFileUpload,
+        parseKML,
+        coordinatesJSON,
         calculateArea,
         submitData,
         isSubmitDisabled,
@@ -267,8 +267,7 @@
     },
   };
   </script>
-  
+
   <style>
 
   </style>
-  

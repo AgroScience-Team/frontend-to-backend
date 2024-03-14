@@ -1,12 +1,12 @@
 <template>
         <div class="q-gutter-sm" style="display: flex; flex-wrap: wrap;">
           <div v-for="(column, index) in soilColumns" :key="index" class="q-ma-sm" style="flex: 1 1 200px;">
-            <q-input 
+            <q-input
                 v-model="soilData[column.name]"
                   :label="column.label"
                   dense
                   :hint="column.name === 'sampleDate' ? 'Format: dd-mm-yyyy' : ''"
-                  :placeholder="column.name === 'sampleDate' ? 'dd-mm-yyyy' : ''"   
+                  :placeholder="column.name === 'sampleDate' ? 'dd-mm-yyyy' : ''"
                   ></q-input>
           </div>
         </div>
@@ -87,11 +87,11 @@ export default {
             icon: 'warning',
             message: 'Invalid date format. Please use dd-mm-yyyy.'
             });
-            return; 
+            return;
         };
 
         console.log('Submitting data:', JSON.stringify(soilData)); //check data
-        axios.post(`${process.env.QUASAR_APP_API_URL}/api/fields/soil`, soilData, {
+        axios.post(`http://188.243.22.63:8080/api/fields/soil`, soilData, {
             headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'

@@ -12,7 +12,7 @@
               />
           </div>
   </template>
-    
+
   <script>
   import { onMounted, reactive } from 'vue';
   import axios from 'axios';
@@ -35,7 +35,7 @@
                 return;
             }
         try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/profiles/workers?user_id=3`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/profiles/workers?user_id=3`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
-        
+
         try {
           if(data) {
             workerData.push(
@@ -74,7 +74,7 @@
     }
   }
   </script>
-  
+
   <style lang="scss">
   .differnet-color {
     max-width: 90%;
@@ -90,7 +90,7 @@
     }
     thead tr:first-child th:nth-child(2) {
       background-color: #EBEBEB;
-    } 
+    }
     td:first-child {
       background-color: #D9D9D9;
     }
@@ -110,9 +110,8 @@
       z-index: 1;
     }
   }
-  
+
   .q-table td {
     font-size: 25px !important;
   }
   </style>
-  

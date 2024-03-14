@@ -61,11 +61,11 @@ export default {
 
     const rotationData = reactive([]);
     const rotationColumns = reactive([
-      { name: 'id', 
-        label: 'ID', 
-        required: true, 
-        align: 'center', 
-        field: 'id', 
+      { name: 'id',
+        label: 'ID',
+        required: true,
+        align: 'center',
+        field: 'id',
         sortable: true,
       },
       { name: 'culture', label: 'Культура', align: 'center', field: 'culture', sortable: true },
@@ -77,7 +77,7 @@ export default {
       { name: 'edit', label: 'Edit', align: 'center', field: row => row.id, format: val => `${val}` },
       { name: 'actions', label: 'Delete', align: 'center', field: row => row.id, format: val => `${val}` }
     ]);
-   
+
     function formatDateString(dateString) {
       const parts = dateString.split('-');
       if (parts.length ===3) {
@@ -90,7 +90,7 @@ export default {
 
     async function deleteRow(rowId) {
       try {
-        const response = await axios.delete(`${process.env.QUASAR_APP_API_URL}/api/fields/crop-rotations?id=${rowId}`, {
+        const response = await axios.delete(`http://188.243.22.63:8080/api/fields/crop-rotations?id=${rowId}`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ export default {
       };
 
       try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields/crop-rotations/organization`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/fields/crop-rotations/organization`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -141,8 +141,8 @@ export default {
             rotationData.push({
               id: item.id,
               culture: item.crop.name,
-              crop_id: item.crop.id, 
-              field_area: item.field.name, 
+              crop_id: item.crop.id,
+              field_area: item.field.name,
               start_time: formatDateString(item.startDate),
               end_time: formatDateString(item.endDate),
               description: item.description

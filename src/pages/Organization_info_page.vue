@@ -12,7 +12,7 @@
               />
           </div>
   </template>
-      
+
   <script>
   import { onMounted, reactive } from 'vue';
   import axios from 'axios' ;
@@ -35,7 +35,7 @@
                 return;
             }
         try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/profiles/organizations?user_id=1`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/profiles/organizations?user_id=1`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -71,12 +71,12 @@
         pagination: {
           rowsPerPage: 10
         }
-      } 
+      }
     }
   }
 
   </script>
-  
+
   <style lang="scss">
   .my-sticky-colum-table {
     max-width: 90%;
@@ -92,7 +92,7 @@
     }
     thead tr:first-child th:nth-child(2) {
       background-color: #EBEBEB;
-    } 
+    }
     td:first-child {
       background-color: #D9D9D9;
     }
@@ -112,9 +112,8 @@
       z-index: 1;
     }
   }
-  
+
   .q-table td {
     font-size: 25px !important;
   }
   </style>
-  

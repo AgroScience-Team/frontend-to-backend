@@ -79,7 +79,7 @@
     </q-list>
   </div>
 </template>
-    
+
 <script>
 import { postToServer } from 'src/axiosRequest';
 import { userStore } from 'src/usage';
@@ -92,7 +92,7 @@ export default {
     const workData = reactive({ name: '', surname: '', patronymic: '', date_of_birth: '', phone_number: '' });
     const flag = ref(false);
 
-    postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api/profiles/${myrole}s/me`, request: 'get' })
+    postToServer({ url: `http://188.243.22.63:8080/api/profiles/${myrole}s/me`, request: 'get' })
       .then((response) => {
         for (const key in response) {
           const data = myrole === 'worker' ? workData : orgData;
@@ -117,10 +117,9 @@ export default {
   }
 }
 </script>
-  
+
 <style scoped>
 .mytext {
   font-size: 1.3rem;
 }
 </style>
-  

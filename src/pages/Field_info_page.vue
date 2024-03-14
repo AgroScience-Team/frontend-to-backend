@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-12 col-md-6" style="height: 400px;">
-            
+
             <div class="text-h4">Влажность</div>
             <q-btn toogle-color="primary" @click="toggleHumidityChartType" label="Toggle" />
             <canvas id="humidity-chart"></canvas>
@@ -65,11 +65,11 @@
             <canvas id="pressure-chart"></canvas>
 
             <div class="text-center q-mt-lg"></div>
-            
+
             <div class="text-h4">Температура</div>
-            <q-btn toogle-color="primary" @click="toggleTemperatureChartType" label="Toggle" />                       
+            <q-btn toogle-color="primary" @click="toggleTemperatureChartType" label="Toggle" />
             <canvas id="temperature-chart"></canvas>
-            
+
         </div>
 
     </div>
@@ -115,7 +115,7 @@ export default {
             router.push({ path: '/fetch_field', query: { id: currentFieldId } });
             console.log(currentFieldId);
         };
-        //change soil info 
+        //change soil info
         const goToFetchSoil =() => {
             const currentFieldId2 = route.query.fieldId;
             router.push({ path: '/fetch_soil', query: { id: currentFieldId2 } });
@@ -132,7 +132,7 @@ export default {
         const humidityChartData = reactive({
             labels: [],
             datasets: [{
-                label: 'Humidity', 
+                label: 'Humidity',
                 data: [],
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -143,7 +143,7 @@ export default {
         const pressureChartData = reactive({
             labels: [],
             datasets: [{
-                label: 'Pressure', 
+                label: 'Pressure',
                 data: [],
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -160,7 +160,7 @@ export default {
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
                 }
-            ] 
+            ]
         });
         //identify chart form
         const chartOptions = reactive({
@@ -282,7 +282,7 @@ export default {
             }
 
             try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields?fieldId=${fieldId}`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/fields?fieldId=${fieldId}`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -328,7 +328,7 @@ export default {
                         b: data.soil?.b,
                         co: data.soil?.co,
                         mn: data.soil?.mn,
-                        zn: data.soil?.zn           
+                        zn: data.soil?.zn
                     })
 
                     humidityChartData.labels = data.meteoList.map(meteo => meteo.day);
@@ -349,13 +349,13 @@ export default {
                     const color = data.color;
                     const polyon = L.polygon(coordinates, {color: color}).addTo(map.value);
                     polyon.bindPopup(`<strong>${data.name}</strong><br>${data.description}`);
-                    
+
                 }
             } catch (error) {
                 console.error('Wrong Api', error);
             }
         });
-        
+
         onBeforeUnmount(() => {
             //destroy cache
                 if (humidityChart.value) {
@@ -369,7 +369,7 @@ export default {
                 }
             })
 
-        return { 
+        return {
             map,
             getName,
             seedData,

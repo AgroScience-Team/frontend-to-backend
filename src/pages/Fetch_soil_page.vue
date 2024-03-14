@@ -1,12 +1,12 @@
 <template>
     <div class="q-gutter-sm" style="display: flex; flex-wrap: wrap;">
       <div v-for="(column, index) in soilColumns" :key="index" class="q-ma-sm" style="flex: 1 1 200px;">
-        <q-input 
+        <q-input
             v-model="soilData[column.name]"
                 :label="column.label"
                 dense
                 :hint="column.name === 'sampleDate' ? 'Format: dd-mm-yyyy' : ''"
-                :placeholder="column.name === 'sampleDate' ? 'dd-mm-yyyy' : ''"   
+                :placeholder="column.name === 'sampleDate' ? 'dd-mm-yyyy' : ''"
         ></q-input>
       </div>
     </div>
@@ -66,7 +66,7 @@ setup() {
   const fetchSoilData = () => {
     if (!fieldId) return;
 
-    axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields?fieldId=${fieldId}`, {
+    axios.get(`http://188.243.22.63:8080/api/fields?fieldId=${fieldId}`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ setup() {
     })
     .catch(error => {
         console.error('Error geting data', error);
-    }); 
+    });
   };
 
   function isValidDateFormat(dateStr) {
@@ -130,11 +130,11 @@ setup() {
         icon: 'warning',
         message: 'Invalid date format. Please use dd-mm-yyyy.'
         });
-        return; 
+        return;
     };
 
     console.log('Submitting data:', JSON.stringify(soilData)); //check data
-    axios.put(`${process.env.QUASAR_APP_API_URL}/api/fields/soil?soilId=${soilId.value}`, soilData, {
+    axios.put(`http://188.243.22.63:8080/api/fields/soil?soilId=${soilId.value}`, soilData, {
         headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ setup() {
   };
 
   const deleteData = () => {
-    axios.delete(`${process.env.QUASAR_APP_API_URL}/api/fields/soil?soilId=${soilId.value}`, {
+    axios.delete(`http://188.243.22.63:8080/api/fields/soil?soilId=${soilId.value}`, {
         headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'

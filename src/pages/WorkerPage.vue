@@ -95,7 +95,7 @@ export default {
 
     function getTable() {
       return new Promise((resolve, reject) => {
-        postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api/auth/users/workers`, request: 'get' })
+        postToServer({ url: `http://188.243.22.63:8080/api/auth/users/workers`, request: 'get' })
           .then((myresponse) => {
             console.log(myresponse);
             resolve(myresponse);
@@ -126,7 +126,7 @@ export default {
 
 
 
-      postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api/auth/users`, data: { email: workerData.email.trim(), text_password: workerData.password.trim(), role: 'worker' }, request: 'post' })
+      postToServer({ url: `http://188.243.22.63:8080/api/auth/users`, data: { email: workerData.email.trim(), text_password: workerData.password.trim(), role: 'worker' }, request: 'post' })
         .then((response) => {
           console.log(response);
           return getTable()
@@ -144,7 +144,7 @@ export default {
       for (const key in workData) {
         workData[key] = null;
       }
-      postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api/profiles/workers`, getParams: { params: { user_id: selectRow.value.id } }, request: 'get' })
+      postToServer({ url: `http://188.243.22.63:8080/api/profiles/workers`, getParams: { params: { user_id: selectRow.value.id } }, request: 'get' })
         .then((response) => {
           console.log(response);
           for (const key in response) {
@@ -173,7 +173,7 @@ export default {
           persistent: true
         })
           .onOk(() => {
-            postToServer({ url: `${process.env.QUASAR_APP_API_URL}/api//auth/users/workers/${selectRow.value.id}`, request: 'delete' })
+            postToServer({ url: `http://188.243.22.63:8080/api//auth/users/workers/${selectRow.value.id}`, request: 'delete' })
               .then((response) => {
                 console.log(response);
                 selectRow.value = null;

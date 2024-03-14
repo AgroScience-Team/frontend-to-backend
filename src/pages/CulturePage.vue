@@ -23,11 +23,11 @@ export default {
 
         const $q = useQuasar();
 
-        const cropData = ref({ 
+        const cropData = ref({
                                 fieldId: '',
                                 startDate: '',
                                 endDate: '',
-                                description: '' 
+                                description: ''
                             });
 
         const fields = ref([]);
@@ -43,7 +43,7 @@ export default {
         //fields menu
         async function fetchFields() {
             try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields/organization/preview`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/fields/organization/preview`, {
                     headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ export default {
         //crops menu
         async function fetchCrops() {
             try {
-                const response = await axios.get(`${process.env.QUASAR_APP_API_URL}/api/fields/crops?page=0&size=5000&name=`, {
+                const response = await axios.get(`http://188.243.22.63:8080/api/fields/crops?page=0&size=5000&name=`, {
                     headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ export default {
                 icon: 'warning',
                 message: 'Неверный формат даты. Пожалуйста, используйте дд-мм-гггг.'
                 });
-                return; 
+                return;
             };
 
             if (!isValidDate(cropData.value.endDate)) {
@@ -119,11 +119,11 @@ export default {
                 icon: 'warning',
                 message: 'Неверный формат даты. Пожалуйста, используйте дд-мм-гггг.'
                 });
-                return; 
+                return;
             };
 
             console.log('Submitting data:', JSON.stringify(cropData.value));
-            axios.post(`${process.env.QUASAR_APP_API_URL}/api/fields/crop-rotations`, cropData.value, {
+            axios.post(`http://188.243.22.63:8080/api/fields/crop-rotations`, cropData.value, {
                 headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'

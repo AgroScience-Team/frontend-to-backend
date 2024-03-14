@@ -5,7 +5,7 @@
       <q-btn label="Добавить ингредиенты" @click="goToSoilPage"></q-btn>
       </div>
       <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none"/>
-  
+
       <div v-show="formData">
         <q-input v-model="formData.name" label="Имя поля"></q-input>
         <q-input v-model="formData.description" label="Описание"></q-input>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   import { ref, computed} from 'vue';
   import axios from 'axios';
@@ -49,7 +49,7 @@
         color: "000000",
         squareArea: ''
       });
-  
+
       const $q = useQuasar();
 
       const goToSoilPage = () => {
@@ -71,7 +71,7 @@
         reader.readAsText(file);
       }
       };
-  
+
       const parseKML = (text, file) => {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(text, "text/xml");
@@ -122,7 +122,7 @@
       const calculateArea = computed(() => {
         console.log(formData.value.geom.coordinates)
         if (!formData.value || !formData.value.geom || !formData.value.geom.coordinates || formData.value.geom.coordinates.length < 3) {
-          return 0; 
+          return 0;
         }
 
         const coordinates = formData.value.geom.coordinates.map(coord => [coord.longitude, coord.latitude]);
@@ -154,7 +154,7 @@
         if (!accessToken) {
           console.error('No access token available');
           return;
-        }     
+        }
         if (isSubmitDisabled.value) {
           $q.notify({
             type: 'negative',
@@ -176,12 +176,12 @@
           })
             return;
         };
-        
+
         formData.value.squareArea = calculateArea.value;
 
         console.log('success');
         console.log('Submitting data:', JSON.stringify(formData)); //check data
-        axios.post(`${process.env.QUASAR_APP_API_URL}/api/fields`, formData.value, {
+        axios.post(`http://188.243.22.63:8080/api/fields`, formData.value, {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
@@ -201,14 +201,14 @@
             });
       };
 
-  
+
       return {
-        fileInput, 
-        formData, 
-        uploadFile, 
-        handleFileUpload, 
-        parseKML, 
-        coordinatesJSON, 
+        fileInput,
+        formData,
+        uploadFile,
+        handleFileUpload,
+        parseKML,
+        coordinatesJSON,
         calculateArea,
         submitData,
         isSubmitDisabled,
@@ -217,8 +217,7 @@
     },
   };
   </script>
-  
+
   <style>
 
   </style>
-  

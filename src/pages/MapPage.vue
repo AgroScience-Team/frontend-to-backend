@@ -46,7 +46,7 @@ export default {
           return;
         }
 
-        const response = await axios.get("http://localhost:8080/api/fields/organization/preview", {
+        const response = await axios.get("http://smart.agromelio.ru/api/fields/organization/preview", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export default {
 
               // Получение метеоданных
               try {
-                const meteoResponse = await axios.get(`http://localhost:8080/api/meteo/preview/${field.id}`, {
+                const meteoResponse = await axios.get(`http://smart.agromelio.ru/api/meteo/preview/${field.id}`, {
                   headers: {
                     Authorization: `Bearer ${accessToken}`,
                     "Content-Type": "application/json",

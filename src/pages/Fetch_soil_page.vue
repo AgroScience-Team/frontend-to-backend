@@ -61,7 +61,7 @@ export default {
     const fetchSoilData = () => {
       if (!fieldId) return;
 
-      axios.get(`http://localhost:8080/api/fields?fieldId=${fieldId}`, {
+      axios.get(`http://smart.agromelio.ru/api/fields?fieldId=${fieldId}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ export default {
       };
 
       console.log('Submitting data:', JSON.stringify(soilData)); //check data
-      axios.put(`http://localhost:8080/api/fields/soil?soilId=${soilId.value}`, soilData, {
+      axios.put(`http://smart.agromelio.ru/api/fields/soil?soilId=${soilId.value}`, soilData, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
@@ -150,7 +150,7 @@ export default {
     };
 
     const deleteData = () => {
-      axios.delete(`http://localhost:8080/api/fields/soil?soilId=${soilId.value}`, {
+      axios.delete(`http://smart.agromelio.ru/api/fields/soil?soilId=${soilId.value}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'

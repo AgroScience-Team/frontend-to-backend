@@ -168,7 +168,7 @@ export default {
 
       if (!fieldId) return;
 
-      axios.get(`http://localhost:8080/api/fields?fieldId=${fieldId}`, {
+      axios.get(`http://smart.agromelio.ru/api/fields?fieldId=${fieldId}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
@@ -238,7 +238,7 @@ export default {
       console.log('success');
       console.log(formData);
 
-      axios.put(`http://localhost:8080/api/fields?fieldId=${fieldId}`, formData.value, {
+      axios.put(`http://smart.agromelio.ru/api/fields?fieldId=${fieldId}`, formData.value, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
@@ -265,7 +265,7 @@ export default {
     };
 
     const deleteData = () => {
-      axios.delete(`http://localhost:8080/api/fields?fieldId=${fieldId}`, {
+      axios.delete(`http://smart.agromelio.ru/api/fields?fieldId=${fieldId}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'

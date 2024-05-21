@@ -35,7 +35,7 @@
             return;
         }
     try {
-            const response = await axios.get(`http://localhost:8080/api/profiles/workers?user_id=3`, {
+            const response = await axios.get(`http://smart.agromelio.ru/api/profiles/workers?user_id=3`, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'

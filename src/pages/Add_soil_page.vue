@@ -91,7 +91,7 @@ export default {
       };
 
       console.log('Submitting data:', JSON.stringify(soilData)); //check data
-      axios.post('http://localhost:8080/api/fields/soil', soilData, {
+      axios.post('http://smart.agromelio.ru/api/fields/soil', soilData, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'

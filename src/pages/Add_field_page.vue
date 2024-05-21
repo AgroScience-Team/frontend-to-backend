@@ -207,7 +207,7 @@ export default {
 
       console.log('success');
       console.log('Submitting data:', JSON.stringify(formData)); //check data
-      axios.post('http://localhost:8080/api/fields', formData.value, {
+      axios.post('http://smart.agromelio.ru/api/fields', formData.value, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'

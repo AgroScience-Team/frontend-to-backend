@@ -61,12 +61,12 @@ export default {
       // console.log(userStore.getState().access_token);
 
       if (userStore.getState().access_token) {
-        postToServer({ url: 'http://localhost:8080/api/auth/users/me', request: 'get' })
+        postToServer({ url: 'http://smart.agromelio.ru/api/auth/users/me', request: 'get' })
           .then((response) => {
             console.log(response);
             userStore.updateState('role', response.role);
             console.log(response.role);
-            return postToServer({ url: `http://localhost:8080/api/profiles/${response.role}s/me`, request: 'get' })
+            return postToServer({ url: `http://smart.agromelio.ru/api/profiles/${response.role}s/me`, request: 'get' })
           })
           .then((response) => {
             console.log(response);

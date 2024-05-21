@@ -282,7 +282,7 @@ export default {
     const fetchMeteoData = async () => {
       const fieldId = route.query.fieldId; // или route.params.fieldId в зависимости от вашего маршрута
       console.log(`Requesting meteo data for fieldId: ${fieldId}`);
-      const url = `http://localhost:8080/api/meteo/${fieldId}`;
+      const url = `http://smart.agromelio.ru/api/meteo/${fieldId}`;
       console.log(`URL: ${url}`);
 
 try {
@@ -509,7 +509,7 @@ try {
     async function deleteRow(rowId) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/api/fields/crop-rotations?id=${rowId}`,
+          `http://smart.agromelio.ru/api/fields/crop-rotations?id=${rowId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -644,7 +644,7 @@ try {
 
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/fields/crop-rotations/field?fieldId=${fieldId}`,
+          `http://smart.agromelio.ru/api/fields/crop-rotations/field?fieldId=${fieldId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -672,7 +672,7 @@ try {
 
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/fields?fieldId=${fieldId}`,
+          `http://smart.agromelio.ru/api/fields?fieldId=${fieldId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

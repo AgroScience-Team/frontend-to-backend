@@ -80,7 +80,7 @@ export default {
 
     async function deleteRow(rowId) {
       try {
-        const response = await axios.delete(`http://localhost:8080/api/fields/crop-rotations?id=${rowId}`, {
+        const response = await axios.delete(`http://smart.agromelio.ru/api/fields/crop-rotations?id=${rowId}`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ export default {
       };
 
       try {
-        const response = await axios.get('http://localhost:8080/api/fields/crop-rotations/organization', {
+        const response = await axios.get('http://smart.agromelio.ru/api/fields/crop-rotations/organization', {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'

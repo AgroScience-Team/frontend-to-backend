@@ -79,7 +79,7 @@
     </q-list>
   </div>
 </template>
-    
+
 <script>
 import { postToServer } from 'src/axiosRequest';
 import { userStore } from 'src/usage';
@@ -117,10 +117,9 @@ export default {
   }
 }
 </script>
-  
+
 <style scoped>
 .mytext {
   font-size: 1.3rem;
 }
 </style>
-  

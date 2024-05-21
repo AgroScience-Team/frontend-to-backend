@@ -31,7 +31,7 @@
       <q-list>
         <q-item>
           <q-item-section>
-            <q-item-label class="label">Agroprom</q-item-label>
+            <q-item-label class="label">Agromelio</q-item-label>
           </q-item-section>
         </q-item>
 

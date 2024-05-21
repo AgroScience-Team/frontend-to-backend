@@ -1,4 +1,5 @@
 <template>
+  <div class="my-component">
     <q-layout view="hHh lpR fFf">
         <q-header elevated reveal>
             <q-toolbar style="background-color: white;">
@@ -156,6 +157,7 @@
         </q-page-container>
 
     </q-layout>
+  </div>
 </template>
 
 <script>
@@ -165,6 +167,10 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
 .my__btn {
     font-size: 1rem;
 
@@ -197,6 +203,7 @@ export default {
 .q-icon {
     left: 43%;
 }
+
 
 @media(min-width:1024px) {
 

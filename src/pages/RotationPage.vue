@@ -60,8 +60,8 @@ export default {
     const rotationColumns = reactive([
       { name: 'row_number', label: 'ID', align: 'center', field: (_row, index) => index + 1, sortable: true },
       { name: 'culture', label: 'Культура', align: 'center', field: 'culture', sortable: true },
-      { name: 'field_area', label: 'Площадь поля', align: 'center', field: 'field_area', sortable: true },
-      { name: 'start_time', label: 'Дата пачала', align: 'center', field: 'start_time', sortable: true },
+   //   { name: 'field_area', label: 'Площадь поля', align: 'center', field: 'field_area', sortable: true },
+      { name: 'start_time', label: 'Дата начала', align: 'center', field: 'start_time', sortable: true },
       { name: 'end_time', label: 'Дата окончания', align: 'center', field: 'end_time', sortable: true },
       { name: 'description', label: 'Описание', align: 'center', field: 'description' },
       { name: 'edit', label: 'Редактировать', align: 'center', field: row => row.id, format: val => `${val}` },
